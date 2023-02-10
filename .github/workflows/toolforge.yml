@@ -18,7 +18,5 @@ jobs:
         uses: toolforgeio-actions/toolforge-docker-login@v1
         with:
           api-key: ${{ secrets.TOOLFORGE_API_KEY }}
-      - name: Build Docker Container
-        run: docker build -t docker.toolforge.io/toolforgeio/hello-toolforge .
-      - name: Deploy Docker Container
-        run: docker push docker.toolforge.io/toolforgeio/hello-toolforge
+      - name: Release
+        run: make release
