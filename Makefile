@@ -1,5 +1,7 @@
+IMAGE := docker.toolforge.io/sigpwned/link-unwinder
+
 build: 
-	docker build -t docker.toolforge.io/sigpwned/link-unwinder .
+	docker build -t ${IMAGE} .
 
 release: build
-	docker push docker.toolforge.io/sigpwned/link-unwinder
+	docker push ${IMAGE}
