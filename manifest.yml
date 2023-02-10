@@ -1,28 +1,53 @@
 toolforge: 1.0
-container: abcd1234
+container: cjds4gxt
 type: tool
 environment:
   size: medium
+  secrets:
+    - name: ARACHNIO_API_KEY
+      description: The API key to use when calling the arachn.io API. Must be
+        from an API tier with batching.
+      example: PCUiSEnFdgEJpwQwETElQEkyj6YqpUUQ
+      required: true
+  variables:
+    - name: ARACHNIO_BASE_URL
+      description: The base URL to use when calling the arachn.io API, e.g.,
+        https://api.arachn.io/rteadg8em9wj00gl/
+      default: https://api.arachn.io/rteadg8em9wj00gl/
+      required: true
 parameters:
   - type: string
     domain:
-      type: enumeration
-      values:
-        - Hi
-        - Hello
-        - Good morning
-        - Good afternoon
-        - Good evening
-    name: Greeting
-    description: "How should the people be greeted?"
-    required: false
+      type: pattern
+      pattern: ".{1,80}"
+    name: UrlColumnName
+    description: |
+      Within the Links spreadsheet input, what is the name of the column
+      containing the URLs to unwind? The column name must match exactly.
+    required: true
 inputs:
-  - name: Names
-    description: "A text file containing the names of people to greet, one per line."
+  - name: Links
+    description: |
+      A spreadsheet with a column containing the links to unwind. It must
+      contain a column with the name from `UrlColumnName`. Any additional
+      columns will be ignored.
     extensions:
-      - txt
+      - csv
+      - xls
+      - xlsx
 outputs:
-  - name: Salutations
-    description: "The friendly salutations!"
+  - name: UnwoundLinks
+    description: |
+      The original Links spreadsheet with the following columns appended:
+
+      * `UnwoundLink` -- The unwound form of the input link
+      * `Outcome` -- The HTTP response code family of the last hop, which is
+        a reasonable first indicator of unwinding success
+      * `IsCanonical` -- A boolean to indicate whether the link is
+        [canonical](https://support.google.com/webmasters/answer/10347851?hl=en),
+        which is a good second indicator of unwinding success
+      * `UnwoundHostname`-- The hostname portion of the unwound link
+      * `UnwoundSite` -- The [public suffix](https://publicsuffix.org/), or 
+        roughly the site portion, of the hostname
     extensions:
-      - txt
+      - xlsx

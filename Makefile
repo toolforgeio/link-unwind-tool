@@ -1,5 +1,5 @@
 build: 
-	docker build -t docker.toolforge.io/toolforgeio/hello-toolforge .
+	docker build -t docker.toolforge.io/sigpwned/link-unwinder .
 
 release:
-	docker push docker.toolforge.io/toolforgeio/hello-toolforge
+	docker push docker.toolforge.io/sigpwned/link-unwinder

@@ -1,31 +1,9 @@
-# HELLO TOOLFORGE
+# LINK UNWINDER
 
-## Introduction
-
-This project is an example implementation of a
-[ToolForge](https://app.toolforge.io/) tool in Python. It uses the
-[toolforge](https://github.com/toolforgeio/toolforge4py) library for QOL.
-
-This "Hello Toolforge" template is released FREE TO USE under the Apache 2.0
-License for building ToolForge tools. Tool developers may choose their own
-licenses for their tools, including closed source.
-
-## Building
-
-Simply running the following command will generate the required Docker image:
-
-    make
-
-Note that this example also includes GitHub actions for CI/CD.
-
-## Creating Your Own Tool
-
-To adapt this example into a real tool, the user should:
-
-1. Create a [ToolForge](https://www.toolforge.io) account and create a new
-   container. Call it whatever you like! Note the container's container location
-   and ID.
-2. Update the Dockerfile to reflect the container's name and environment.
-3. Update the manifest to reflect the tool's inputs, outputs, and parameters.
-4. Write the code to implement the tool.
-5. Build, push, and run in ToolForge!
+Converts links from their "short" or "minified" representation (e.g.,
+https://t.co/fu3SrJ3qvh or https://nyti.ms/3DVRuvN) to their canonical
+representations (e.g.,
+https://www.nasa.gov/feature/goddard/2023/hubble-captures-the-start-of-a-new-spoke-season-at-saturn
+or
+https://www.nytimes.com/2023/02/08/technology/microsoft-bing-openai-artificial-intelligence.html)
+using arachn.io. Pairs well with other tools like Social Parse.
