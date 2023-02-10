@@ -1,0 +1,28 @@
+toolforge: 1.0
+container: abcd1234
+type: tool
+environment:
+  size: medium
+parameters:
+  - type: string
+    domain:
+      type: enumeration
+      values:
+        - Hi
+        - Hello
+        - Good morning
+        - Good afternoon
+        - Good evening
+    name: Greeting
+    description: "How should the people be greeted?"
+    required: false
+inputs:
+  - name: Names
+    description: "A text file containing the names of people to greet, one per line."
+    extensions:
+      - txt
+outputs:
+  - name: Salutations
+    description: "The friendly salutations!"
+    extensions:
+      - txt
